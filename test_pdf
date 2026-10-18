@@ -1,0 +1,9 @@
+from tools.pdf_reader import read_pdf
+
+
+pdf_path = input("PDF path: ")
+
+text = read_pdf(pdf_path)
+
+print("\n--- PDF TEXT ---\n")
+print(text[:3000])
