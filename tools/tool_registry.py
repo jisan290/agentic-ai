@@ -2,6 +2,7 @@ from .calculator import calculate
 from .text_analyzer import count_words
 from .pdf_reader import read_pdf
 from .docx_reader import read_docx
+from .web_search import web_search
 
 
 TOOL_FUNCTIONS = {
@@ -9,7 +10,7 @@ TOOL_FUNCTIONS = {
     "read_docx": read_docx,
     "count_words": count_words,
     "read_pdf": read_pdf,
-
+    "web_search": web_search,
 }
 
 
@@ -83,7 +84,35 @@ TOOL_DEFINITIONS = [
         },
         "strict": True,
     },
-
+    {
+        "type": "function",
+        "name": "web_search",
+        "description": (
+            "Search the web using Google and return the top results. "
+            "Use this when the user asks a question that requires "
+            "up-to-date information, facts you are unsure about, or "
+            "any topic that would benefit from online research."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The search query to look up.",
+                },
+                "num_results": {
+                    "type": "integer",
+                    "description": (
+                        "Number of results to return (1-10). "
+                        "Defaults to 5."
+                    ),
+                },
+            },
+            "required": ["query"],
+            "additionalProperties": False,
+        },
+        "strict": True,
+    },
 ]
 
 RESEARCH_TOOLS = TOOL_DEFINITIONS
