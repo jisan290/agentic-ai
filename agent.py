@@ -26,14 +26,17 @@ Your job is to investigate questions and provide useful, accurate answers.
 
 Rules:
 1. Use read_pdf when the user provides a PDF file path and asks you to inspect, summarize, explain, analyze, or extract information from that PDF.
-2. Use calculator when mathematical calculations are needed.
-3. Use count_words when counting words is useful.
-4. Use web_search when the user asks a question that requires up-to-date information, current events, facts you are unsure about, or any topic that would benefit from online research.
-5. Never pretend that you read a file if the read_pdf tool was not actually used.
-6. Do not invent information that is not present in the provided sources or files.
-7. Synthesize information instead of simply copying it.
-8. Give the user a clear, structured answer.
-9. When using web_search results, cite the source URLs in your answer.
+2. Use read_docx when the user provides a DOCX file path to inspect or extract text from.
+3. Use calculator when mathematical calculations are needed.
+4. Use count_words when counting words is useful.
+5. Use search_wikipedia when you need reliable factual summaries, encyclopedic context, definitions, or biographical/scientific background.
+6. Use web_search when the user asks a question that requires up-to-date information, current events, facts you are unsure about, or broad online research.
+7. Use scrape_webpage when you need to read the full or detailed text content of a specific web URL or article.
+8. Never pretend that you read a file or web page if the corresponding tool was not actually used.
+9. Do not invent information that is not present in the provided sources or files.
+10. Synthesize information instead of simply copying it.
+11. Give the user a clear, structured answer.
+12. When using search_wikipedia, web_search, or scrape_webpage, cite the relevant source URLs in your answer.
 """
 
 def create_initial_interaction(question):

@@ -3,6 +3,8 @@ from .text_analyzer import count_words
 from .pdf_reader import read_pdf
 from .docx_reader import read_docx
 from .web_search import web_search
+from .wikipedia_tool import search_wikipedia
+from .web_scraper import scrape_webpage
 
 
 TOOL_FUNCTIONS = {
@@ -11,6 +13,8 @@ TOOL_FUNCTIONS = {
     "count_words": count_words,
     "read_pdf": read_pdf,
     "web_search": web_search,
+    "search_wikipedia": search_wikipedia,
+    "scrape_webpage": scrape_webpage,
 }
 
 
@@ -109,6 +113,52 @@ TOOL_DEFINITIONS = [
                 },
             },
             "required": ["query"],
+            "additionalProperties": False,
+        },
+        "strict": True,
+    },
+    {
+        "type": "function",
+        "name": "search_wikipedia",
+        "description": (
+            "Search Wikipedia for factual background, encyclopedic information, "
+            "definitions, historical figures, science, and concepts. Returns a "
+            "clear summary along with the canonical article URL."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The topic, entity, or search term to look up on Wikipedia.",
+                }
+            },
+            "required": ["query"],
+            "additionalProperties": False,
+        },
+        "strict": True,
+    },
+    {
+        "type": "function",
+        "name": "scrape_webpage",
+        "description": (
+            "Extract readable text content and title from a web page URL. "
+            "Use this to inspect specific web pages, blog posts, documentation, "
+            "or links found from web search."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "description": "The full HTTP/HTTPS URL of the web page to scrape.",
+                },
+                "max_chars": {
+                    "type": "integer",
+                    "description": "Maximum number of characters to extract (default: 4000).",
+                },
+            },
+            "required": ["url"],
             "additionalProperties": False,
         },
         "strict": True,
